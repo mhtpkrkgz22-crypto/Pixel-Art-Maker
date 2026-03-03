@@ -1,7 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #efd0a9;
-    
+    margin: 0;
 }
 
 .main-container {
@@ -77,6 +77,10 @@ footer {
     background-color: #7f8390;
     padding: 10px;
     font-size: 18px;
+    margin: 0;
+    left: 0;
+    bottom: 0;
+    text-align: center;
 }
 
 a {
