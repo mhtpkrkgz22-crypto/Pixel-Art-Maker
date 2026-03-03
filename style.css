@@ -10,24 +10,81 @@ body {
     text-align: center;
 }
 
-img {
-    width: 700px;
+.bear-image {
+    width: 1030px;
     height: auto;
 }
 
 .container {
     position: relative;
-    display: inline-block;
 }
 
 .middle-place {
     position: absolute;
-    top: 212px;
+    top: 340px;
     left: 50%;
     transform: translateX(-50%);
-    border: 2px solid #000000;
+    border: 3px solid #000000;
     border-radius: 5px;
-    width: 239px;
-    height: 322px;
+    width: 400px;
+    height: 400px;
     z-index: 2;
+}
+
+
+
+.buttons {
+    position: absolute;
+    top: 375px;
+    left: 24%;
+    transform: translateX(-50%);
+    display: grid;
+    gap: 50px;
+}
+
+.btn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.color-palette-container {
+    position: absolute;
+    top: 880px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.color-picker  {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background: none;
+    border-radius: 9px;
+}
+
+
+.slider {
+    width: 120px;
+}
+
+footer {
+    width: 100%;
+    height: auto;
+    background-color: #7f8390;
+    padding: 10px;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.github-logo {
+    width: 20px;
+    height: auto;
 }
