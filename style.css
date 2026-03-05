@@ -11,7 +11,7 @@ body {
 }
 
 .bear-image {
-    width: 1030px;
+    width: 800px;
     height: auto;
 }
 
@@ -21,49 +21,63 @@ body {
 
 .middle-place {
     position: absolute;
-    top: 340px;
+    top: 265px;
     left: 50%;
     transform: translateX(-50%);
     border: 3px solid #000000;
     border-radius: 5px;
-    width: 400px;
-    height: 400px;
+    width: 310px;
+    height: 310px;
     z-index: 2;
 }
 
-
-
 .buttons {
     position: absolute;
-    top: 375px;
-    left: 24%;
-    transform: translateX(-50%);
+    top: 240px;
+    left: 5%;
     display: grid;
-    gap: 50px;
+    gap: 35px;
 }
 
 .btn {
-    background-color: #ffffff;
+    background-color: #ffacaf;
+    height: 38px;
+    width: auto;
     color: rgb(0, 0, 0);
     font-size: 18px;
-    border-radius: 9px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.color-palette-container {
-    position: absolute;
-    top: 880px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
+#rainbow-btn {
+    background: conic-gradient(
+    from 0deg at 50% 50%,
+    #42eff5,
+    #ca8aff,
+    #ff73ec,
+    #ffa340,
+    #ffe940,
+    #42eff5,
+    #42eff5
+  );
 }
 
 .color-picker  {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     background: none;
     border-radius: 9px;
+    background: conic-gradient(
+    from 0deg at 50% 50%,
+    #42eff5,
+    #ca8aff,
+    #ff73ec,
+    #ffa340,
+    #ffe940,
+    #42eff5,
+    #42eff5
+  );
 }
 
 
