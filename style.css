@@ -30,6 +30,7 @@ body {
     width: 310px;
     height: 310px;
     z-index: 2;
+    user-select: none;
 }
 
 .cell {
@@ -57,7 +58,7 @@ body {
     cursor: pointer;
 }
 
-#rainbow-btn {
+.rainbow-btn {
     background: conic-gradient(
     from 0deg at 50% 50%,
     #42eff5,
@@ -70,7 +71,7 @@ body {
   );
 }
 
-.color-picker  {
+#color-picker  {
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -88,7 +89,7 @@ body {
   );
 }
 
-.slider {
+#slider {
     width: 120px;
 }
 

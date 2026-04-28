@@ -19,20 +19,20 @@
         />
 
         <div class="buttons">
-          <button id="paint-btn" class="btn">PAINT</button>
-          <button id="rainbow-btn" class="btn">RAINBOW</button>
-          <button id="eraser-btn" class="btn">ERASER</button>
-          <button id="clear-btn" class="btn">CLEAR</button>
-          <button id="hide-btn" class="btn">HIDE GRID</button>
+          <button class="btn paint-btn">PAINT</button>
+          <button class="btn rainbow-btn">RAINBOW</button>
+          <button class="btn eraser-btn">ERASER</button>
+          <button class="btn clear-btn">CLEAR</button>
+          <button class="btn hide-btn">HIDE GRID</button>
           <div class="color-palette-container">
             <input
               type="color"
               value="#b92dad"
-              class="color-picker"
+              id="color-picker"
               title="Color Palette"
             />
           </div>
-          <input class="slider" type="range" min="1" max="50" value="16" />
+          <input id="slider" type="range" min="1" max="50" value="16" />
           <p class="grid-value">16 x 16</p>
         </div>
       </div>
