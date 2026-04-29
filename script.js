@@ -2,7 +2,7 @@ let isMouseDown = false;
 let currentMode = "paint";
 
 const container = document.querySelector('.container');
-const gridArea = document.querySelector('.middle-place');
+const gridArea = document.querySelector('.grid-container');
 const buttons = document.querySelectorAll('.btn');
 const paintBtn = document.querySelector('.paint-btn');
 const rainbowBtn = document.querySelector('.rainbow-btn');
@@ -86,6 +86,9 @@ rainbowBtn.addEventListener('click', () => {
     currentMode = "rainbow";
 });
 
+hideBtn.addEventListener('click', () => {
+    gridArea.classList.toggle('hide-grid');
+});
 
 
 createGrid();
