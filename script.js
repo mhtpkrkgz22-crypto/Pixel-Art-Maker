@@ -13,12 +13,11 @@ year.textContent = new Date().getFullYear();
 let isMouseDown = false;
 let currentMode = "paint";
 let gridSize = Number(slider.value);
-
+let gridVisible = true;
 
 function getRandomColor() {
     return `hsl(${Math.random() * 360}, 100%, 50%)`;
 }
-
 
 function paintCell(e) {
     console.log(e);
@@ -40,7 +39,6 @@ function paintCell(e) {
     }
 }
 
-
 function createGrid(gridSize) { 
 
     gridArea.innerHTML = ""; 
@@ -60,8 +58,6 @@ function createGrid(gridSize) {
     } 
 }
 
-
-
 slider.addEventListener('input', () => {
     gridSize = Number(slider.value);
 
@@ -69,7 +65,6 @@ slider.addEventListener('input', () => {
 
     createGrid(gridSize);
 });
-
 
 document.addEventListener('mousedown', () => {
     isMouseDown = true;
@@ -79,36 +74,32 @@ document.addEventListener('mouseup', () => {
     isMouseDown = false;
 });
 
-
-
 paintBtn.addEventListener('click', () => {
     currentMode = "paint";
 });
-
-
 
 eraserBtn.addEventListener('click', () => {
     currentMode = "eraser";
 });
 
-
-
 rainbowBtn.addEventListener('click', () => {
     currentMode = "rainbow";
 });
-
-
 
 clearBtn.addEventListener('click', () => {
     createGrid(gridSize);
 });
 
-
-
 hideBtn.addEventListener('click', () => {
-    gridArea.classList.toggle('hide-grid');
+    gridVisible = !gridVisible;
+
+    if(gridVisible){
+        hideBtn.textContent = "HIDE GRID";
+        gridArea.classList.remove('hide-grid');
+    }else {
+        hideBtn.textContent = "SHOW GRID";
+        gridArea.classList.add('hide-grid');
+    }
 });
-
-
 
 createGrid(gridSize);
