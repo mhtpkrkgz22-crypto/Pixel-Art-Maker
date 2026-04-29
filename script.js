@@ -1,17 +1,17 @@
 let isMouseDown = false;
 let currentMode = "paint";
 
-const container = document.querySelector('.container');
 const gridArea = document.querySelector('.grid-container');
-const buttons = document.querySelectorAll('.btn');
 const paintBtn = document.querySelector('.paint-btn');
 const rainbowBtn = document.querySelector('.rainbow-btn');
 const eraserBtn = document.querySelector('.eraser-btn');
 const clearBtn = document.querySelector('.clear-btn');
 const hideBtn = document.querySelector('.hide-btn');
-const colorPicker = document.querySelector('#color-picker');
-const slider = document.querySelector('#slider');
+const colorPicker = document.querySelector('.color-picker');
+const slider = document.querySelector('.slider');
 const gridValue = document.querySelector('.grid-value');
+
+
 
 document.addEventListener('mousedown', () => {
     isMouseDown = true;
@@ -21,74 +21,94 @@ document.addEventListener('mouseup', () => {
     isMouseDown = false;
 });
 
+
+
+function getRandomColor() {
+    return `hsl(${Math.random() * 360}, 100%, 50%)`;
+}
+
+
+
 function paintCell(e) {
     if (e.type === "mousedown" || isMouseDown) {
 
-        if (currentMode === "paint") {
-            e.target.style.backgroundColor = colorPicker.value;
-        }
+        switch (currentMode) {
+            case "paint":
+                e.target.style.backgroundColor = colorPicker.value;
+                break;
 
-        if (currentMode === "eraser") {
-            e.target.style.backgroundColor = "#ffffff";
-        }
+            case "eraser":
+                e.target.style.backgroundColor = "#ffffff";
+                break;
 
-        if (currentMode === "rainbow") {
-            e.target.style.backgroundColor = getRandomColor();
+            case "rainbow":
+                e.target.style.backgroundColor = getRandomColor();
+                break;
         }
     }
 }
 
-function createGrid(size){
 
-    size = Number(slider.value);
+
+function createGrid() {
+    const size = Number(slider.value);
 
     gridArea.innerHTML = "";
 
-    gridArea.style.gridTemplateColumns = `repeat(${size}, 1fr)`
-    gridArea.style.gridTemplateRows = `repeat(${size}, 1fr)`
+    gridArea.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    gridArea.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-    for(let i = 0; i < size * size; i++){
+    for (let i = 0; i < size * size; i++) {
         const cell = document.createElement('div');
         cell.classList.add("cell");
 
         cell.addEventListener('mousedown', paintCell);
         cell.addEventListener('mouseover', paintCell);
 
-        gridArea.append(cell);
+        gridArea.appendChild(cell);
     }
 }
 
+
+
 slider.addEventListener('input', () => {
-    let size = Number(slider.value);
+    const size = Number(slider.value);
 
     gridValue.textContent = `${size} x ${size}`;
-
-    createGrid(size);
+    createGrid();
 });
 
-eraserBtn.addEventListener('click', () => {
-    currentMode = "eraser";
-})
+
 
 paintBtn.addEventListener('click', () => {
     currentMode = "paint";
-})
+});
 
-clearBtn.addEventListener('click', () => {
-    createGrid(Number(slider.value));
-})
 
-function getRandomColor() {
-    return `hsl(${Math.random() * 360}, 100%, 50%)`;
-}
+
+eraserBtn.addEventListener('click', () => {
+    currentMode = "eraser";
+});
+
+
 
 rainbowBtn.addEventListener('click', () => {
     currentMode = "rainbow";
 });
 
+
+
+
+clearBtn.addEventListener('click', () => {
+    createGrid();
+});
+
+
+
 hideBtn.addEventListener('click', () => {
     gridArea.classList.toggle('hide-grid');
 });
+
 
 
 createGrid();
