@@ -7,8 +7,8 @@ const rainbowBtn = document.querySelector('.rainbow-btn');
 const eraserBtn = document.querySelector('.eraser-btn');
 const clearBtn = document.querySelector('.clear-btn');
 const hideBtn = document.querySelector('.hide-btn');
-const colorPicker = document.querySelector('.color-picker');
-const slider = document.querySelector('.slider');
+const colorPicker = document.querySelector('#color-picker');
+const slider = document.querySelector('#slider');
 const gridValue = document.querySelector('.grid-value');
 
 
@@ -50,32 +50,35 @@ function paintCell(e) {
 
 
 
-function createGrid() {
-    const size = Number(slider.value);
+function createGrid(size) { 
 
-    gridArea.innerHTML = "";
+    size = Number(slider.value);
+
+    gridArea.innerHTML = ""; 
 
     gridArea.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     gridArea.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-    for (let i = 0; i < size * size; i++) {
-        const cell = document.createElement('div');
-        cell.classList.add("cell");
-
-        cell.addEventListener('mousedown', paintCell);
+    for (let i = 0; i < size * size; i++) { 
+        const cell = document.createElement('div'); 
+        
+        cell.classList.add("cell"); 
+        
+        cell.addEventListener('mousedown', paintCell); 
         cell.addEventListener('mouseover', paintCell);
 
-        gridArea.appendChild(cell);
-    }
+        gridArea.appendChild(cell); 
+    } 
 }
 
 
 
 slider.addEventListener('input', () => {
-    const size = Number(slider.value);
+    let size = Number(slider.value);
 
     gridValue.textContent = `${size} x ${size}`;
-    createGrid();
+
+    createGrid(size);
 });
 
 
@@ -98,7 +101,6 @@ rainbowBtn.addEventListener('click', () => {
 
 
 
-
 clearBtn.addEventListener('click', () => {
     createGrid();
 });
@@ -111,4 +113,4 @@ hideBtn.addEventListener('click', () => {
 
 
 
-createGrid();
+createGrid(Number(slider.value));
