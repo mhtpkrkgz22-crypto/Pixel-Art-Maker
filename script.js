@@ -31,6 +31,10 @@ function paintCell(e) {
         if (currentMode === "eraser") {
             e.target.style.backgroundColor = "#ffffff";
         }
+
+        if (currentMode === "rainbow") {
+            e.target.style.backgroundColor = getRandomColor();
+        }
     }
 }
 
@@ -73,5 +77,15 @@ paintBtn.addEventListener('click', () => {
 clearBtn.addEventListener('click', () => {
     createGrid(Number(slider.value));
 })
+
+function getRandomColor() {
+    return `hsl(${Math.random() * 360}, 100%, 50%)`;
+}
+
+rainbowBtn.addEventListener('click', () => {
+    currentMode = "rainbow";
+});
+
+
 
 createGrid();
