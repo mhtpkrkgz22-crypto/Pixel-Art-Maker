@@ -1,26 +1,18 @@
-let isMouseDown = false;
-let currentMode = "paint";
-
 const gridArea = document.querySelector('.grid-container');
 const paintBtn = document.querySelector('.paint-btn');
 const rainbowBtn = document.querySelector('.rainbow-btn');
 const eraserBtn = document.querySelector('.eraser-btn');
 const clearBtn = document.querySelector('.clear-btn');
 const hideBtn = document.querySelector('.hide-btn');
-const colorPicker = document.querySelector('#color-picker');
+const colorPicker = document.querySelector('#colorPicker');
 const slider = document.querySelector('#slider');
 const gridValue = document.querySelector('.grid-value');
+const year = document.querySelector('.year');
 
-
-
-document.addEventListener('mousedown', () => {
-    isMouseDown = true;
-});
-
-document.addEventListener('mouseup', () => {
-    isMouseDown = false;
-});
-
+year.textContent = new Date().getFullYear();
+let isMouseDown = false;
+let currentMode = "paint";
+let gridSize = Number(slider.value);
 
 
 function getRandomColor() {
@@ -28,8 +20,8 @@ function getRandomColor() {
 }
 
 
-
 function paintCell(e) {
+    console.log(e);
     if (e.type === "mousedown" || isMouseDown) {
 
         switch (currentMode) {
@@ -49,17 +41,14 @@ function paintCell(e) {
 }
 
 
-
-function createGrid(size) { 
-
-    size = Number(slider.value);
+function createGrid(gridSize) { 
 
     gridArea.innerHTML = ""; 
 
-    gridArea.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    gridArea.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    gridArea.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+    gridArea.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
 
-    for (let i = 0; i < size * size; i++) { 
+    for (let i = 0; i < gridSize * gridSize; i++) { 
         const cell = document.createElement('div'); 
         
         cell.classList.add("cell"); 
@@ -74,11 +63,20 @@ function createGrid(size) {
 
 
 slider.addEventListener('input', () => {
-    let size = Number(slider.value);
+    gridSize = Number(slider.value);
 
-    gridValue.textContent = `${size} x ${size}`;
+    gridValue.textContent = `${gridSize} x ${gridSize}`;
 
-    createGrid(size);
+    createGrid(gridSize);
+});
+
+
+document.addEventListener('mousedown', () => {
+    isMouseDown = true;
+});
+
+document.addEventListener('mouseup', () => {
+    isMouseDown = false;
 });
 
 
@@ -102,7 +100,7 @@ rainbowBtn.addEventListener('click', () => {
 
 
 clearBtn.addEventListener('click', () => {
-    createGrid();
+    createGrid(gridSize);
 });
 
 
@@ -113,4 +111,4 @@ hideBtn.addEventListener('click', () => {
 
 
 
-createGrid(Number(slider.value));
+createGrid(gridSize);
