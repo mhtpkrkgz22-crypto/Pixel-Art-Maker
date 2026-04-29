@@ -70,4 +70,8 @@ paintBtn.addEventListener('click', () => {
     currentMode = "paint";
 })
 
+clearBtn.addEventListener('click', () => {
+    createGrid(Number(slider.value));
+})
+
 createGrid();
